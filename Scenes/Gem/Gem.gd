@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	position.y += 100 * delta
 	if position.y > Game.get_vpr().end.y:
 		gem_off_screen.emit()
-		print("desde el nodo de gema")
 		die()
 
 func _on_area_entered(area: Area2D) -> void:

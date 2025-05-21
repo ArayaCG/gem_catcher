@@ -15,11 +15,10 @@ func _process(delta: float) -> void:
 	
 	position.x = clampf(
 		position.x,
-		Game.get_vpr().position.x + 33 ,
+		Game.get_vpr().position.x + 33,
 		Game.get_vpr().end.x - 33
 	)
 
 
-
 func _on_area_entered(area: Area2D) -> void:
-	print("hola")
+	print("hola ", area)

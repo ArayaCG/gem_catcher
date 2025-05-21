@@ -28,7 +28,7 @@ func update_vp() -> void:
 
 func spawn_gem() -> void:
 	var new_gem: Gem = GEM.instantiate()
-	var x_pos: float = randf_range(_vp_r.position.x+MARGIN, _vp_r.end.x-MARGIN)
+	var x_pos: float = randf_range(_vp_r.position.x + MARGIN, _vp_r.end.x - MARGIN)
 
 	new_gem.position = Vector2(x_pos, -MARGIN)
 	new_gem.gem_off_screen.connect(_on_gem_off_screen)

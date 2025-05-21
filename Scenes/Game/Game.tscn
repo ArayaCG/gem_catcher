@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn2n0fjdnbvjv"]
+[gd_scene load_steps=6 format=3 uid="uid://bn2n0fjdnbvjv"]
 
 [ext_resource type="Script" uid="uid://cgdgbw5xpx3h0" path="res://Scenes/Game/Game.gd" id="1_ln2h6"]
 [ext_resource type="Texture2D" uid="uid://m14e05lcg3qk" path="res://assets/GameBg.png" id="1_rdw05"]
 [ext_resource type="PackedScene" uid="uid://c4rwydyps12sg" path="res://Scenes/Paddle/Paddle.tscn" id="2_gwu2e"]
+[ext_resource type="AudioStream" uid="uid://dwuwcfwcp7inu" path="res://assets/bgm_action_5.mp3" id="4_y3kpf"]
+[ext_resource type="AudioStream" uid="uid://d1ru44h5gwqxa" path="res://assets/spell1_0.wav" id="5_3k6gv"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ln2h6")
@@ -16,9 +18,32 @@ texture = ExtResource("1_rdw05")
 position = Vector2(532, 606)
 scale = Vector2(0.63, 0.63)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y3kpf")
+volume_db = -15.0
+autoplay = true
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3k6gv")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 103.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0.250178, 0.76646, 0.659667, 1)
+theme_override_colors/font_shadow_color = Color(0.0200523, 0.549208, 0.45861, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.0627451, 0.121569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 48
+text = "000"
+
 [connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

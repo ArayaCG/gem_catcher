@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 	
 	position.x = clampf(
 		position.x,
-		get_viewport_rect().position.x + 33 ,
-		get_viewport_rect().end.x - 33
+		Game.get_vpr().position.x + 33 ,
+		Game.get_vpr().end.x - 33
 	)
 
 
